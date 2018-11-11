@@ -1,28 +1,61 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div >
+   <Navbar/>
+    <Slider animation='fade'>
+      <SliderItem v-for="(i, index) in list" :key="index">
+        <img :src="i.src" class="image-item" />
+      </SliderItem>
+    </Slider>
+    <vue-picture-swipe :items="list" />
+    <accordion title="Accordion component #1" />
+    <accordion title="Accordion component #2" />
+    <accordion title="Accordion component #3" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Navbar from "./components/Navbar";
+import { Slider, SliderItem } from "vue-easy-slider";
+import VuePictureSwipe from "vue-picture-swipe";
+import Accordion from "./components/Accordion";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Navbar,
+    Slider,
+    SliderItem,
+    VuePictureSwipe,
+    Accordion
+  },
+  data() {
+    return {
+      list: [
+        {
+          src: require("./assets/foto/bike.jpg"),
+          thumbnail: require("./assets/foto/bike.jpg"),
+          w: 150,
+          h: 150
+        },
+        {
+          src: require("./assets/foto/bike1.jpg"),
+          thumbnail: require("./assets/foto/bike.jpg"),
+          w: 150,
+          h: 150
+        }
+      ]
+    };
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.image-item {
+  width: auto;
+  height: 100%;
+  margin-left: 40%;
+}
+img {
+  height: 20%;
+  width: 20%;
 }
 </style>

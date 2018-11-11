@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VShowSlide from 'v-show-slide';
+
+Vue.use(VShowSlide)
 
 Vue.config.productionTip = false
 
